@@ -28,22 +28,22 @@ Overlapping regions are identified, and excised unless they are too
 close.
 
 Using this program is easy, but the documentation is currently
-incomplete, and laso it requires non-trivial preparation steps.
+incomplete, and also it requires non-trivial preparation steps.
 Therefore, it is strongly advised that the user contacts the author (
 pranalli.github@gmail.com ) if there is any uncertainty about how to
 proceed.
 
-In particular, the user shuold:
+In particular, the user should:
 
-    \* setup a PostgreSQL database holding the source information and
+    * setup a PostgreSQL database holding the source information and
     the haversine distance function;
 
-    \* edit two files: the PDL::PGSQL package (which contains the
+    * edit two files: the PDL::PGSQL package (which contains the
     access info to the database) and the Query package (which contains
     the SQL queries; more info can be obtained with the command
     "perldoc Query.pm");
 
-    \* install two Perl libraries: PDL (including PDL::Minuit) and
+    * install two Perl libraries: PDL (including PDL::Minuit) and
     Moose. These are available in the repositories of most Linux
     distributions and (for Mac users) in Macports.
 
@@ -72,7 +72,7 @@ the same idea of
                        corrected for the encircled energy fraction of the
                        source region
 
-    Loop TEST_RADIUS = 1 to 300 arcseconds
+    Loop: maximize S/N ratio using Minuit. At each iteration do:
 
       EEF = calculate encircled energy fraction for this TEST_RADIUS
              using the PSF relevant for this Epic camera at the
@@ -83,10 +83,6 @@ the same idea of
       BGD_COUNTS = background counts per arcsec^2 * PI * TEST_RADIUS**2
 
       S/N ratio = SRC_COUNTS / sqrt(SRC_COUNTS + BGD_COUNTS)
-
-      if (S/N ratio > SNRMAX) {
-         SNRMAX = S/N ratio
-      }
 
     EndLoop
 
