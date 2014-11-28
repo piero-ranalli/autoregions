@@ -19,7 +19,7 @@ returns double precision as
 $BODY$
 select 2*asin(sqrt(
        (sin(radians(dec1-dec2)/2))^2
-       +cos(radians(ra1))*cos(radians(ra2))*(sin(radians(ra1-ra2)/2))^2
+       +cos(radians(dec1))*cos(radians(dec2))*(sin(radians(ra1-ra2)/2))^2
        ))
 as haversine;
 $BODY$
